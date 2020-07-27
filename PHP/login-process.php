@@ -19,7 +19,7 @@
 	if(empty($error))
 	{
 		$query = "
-			SELECT userID, firstName, lastName, nickname, email, password, profileImage
+			SELECT userID, firstName, lastName, nickname, email, password, profileImage, status
 			FROM users WHERE email=?
 		";
 
@@ -34,7 +34,22 @@
 		{
 			if(password_verify($password, $row['password']))
 			{
-				header('location: index.php');
+				if($row['status'] == 'admin')
+				{
+					$_SESSION['admin'] = $row['userID'];
+					header('location: adminpanel.php');
+				}
+				else if($row['status'] == 'superadmin')
+				{
+					$_SESSION['superadmin'] = $row['userID'];
+					header('location: superadminpanel.php');
+				}
+				else
+				{
+					$_SESSION['user'] = $row['userID'];
+					header('location: index.php');
+				}
+				
 				exit();
 			}
 		}

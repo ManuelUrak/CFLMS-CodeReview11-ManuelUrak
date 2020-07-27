@@ -1,0 +1,36 @@
+
+
+body
+{
+	background-image: url(../Assets/admin-background.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.d-flex button
+{
+	margin: 2% 1%;
+	padding: 1% 6%;
+}
+
+img
+{
+	width: 15%;
+}
+
+table .btnedit
+{
+	cursor: pointer;
+}
+
+.success
+{
+	background-color: lightgreen;
+	padding: 2%;
+}
+
+.error
+{
+	background-color: tomato;
+	padding: 2%;
+}
